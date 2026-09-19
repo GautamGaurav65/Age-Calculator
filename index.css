@@ -1,0 +1,357 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+
+    background: linear-gradient(
+        135deg,
+        #667eea,
+        #764ba2,
+        #6a11cb,
+        #2575fc
+    );
+
+    background-size: 400% 400%;
+
+    animation: gradientBG 10s ease infinite;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+
+/* Background Animation */
+
+@keyframes gradientBG {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+
+}
+
+
+/* Background Circles */
+
+body::before {
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    top: -100px;
+    left: -80px;
+}
+
+
+body::after {
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    bottom: -120px;
+    right: -80px;
+}
+
+
+/* Main Container */
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+
+    padding: 30px;
+
+    position: relative;
+
+    z-index: 1;
+}
+
+
+/* Heading */
+
+.heading {
+    text-align: center;
+
+    margin-bottom: 55px;
+}
+
+
+.heading h1 {
+    font-size: 55px;
+
+    color: white;
+
+    font-weight: 700;
+
+    margin-bottom: 10px;
+}
+
+
+.heading h1 span {
+    color: #19a8ff;
+}
+
+
+.heading p {
+    color: white;
+
+    font-size: 20px;
+
+    opacity: 0.95;
+}
+
+
+/* Calculator */
+
+.calculator {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1fr;
+
+    gap: 25px;
+
+    align-items: end;
+}
+
+
+/* Input */
+
+.input-box {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+.input-box label {
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: 600;
+
+    margin-left: 5px;
+}
+
+
+#dates {
+
+    width: 100%;
+
+    height: 68px;
+
+    padding: 0 22px;
+
+    border: none;
+
+    outline: none;
+
+    border-radius: 16px;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    color: #333;
+
+    font-size: 18px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.12);
+
+    transition: 0.3s;
+}
+
+
+#dates:hover {
+    transform: translateY(-2px);
+}
+
+
+#dates:focus {
+
+    box-shadow:
+        0 0 0 4px rgba(255, 255, 255, 0.25),
+        0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Button */
+
+button {
+
+    width: 100%;
+
+    height: 68px;
+
+    border: none;
+
+    border-radius: 16px;
+
+    background: linear-gradient(
+        90deg,
+        #159eea,
+        #5b6ff5,
+        #c43df5
+    );
+
+    color: white;
+
+    font-size: 19px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.2);
+
+    transition: all 0.3s ease;
+}
+
+
+button:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+
+button:active {
+
+    transform: scale(0.97);
+
+}
+
+
+/* Result */
+
+.result {
+
+    width: 100%;
+
+    min-height: 118px;
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+
+.result p {
+
+    color: #24345d;
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    line-height: 1.4;
+}
+
+
+/* Mobile */
+
+@media (max-width: 900px) {
+
+    .calculator {
+
+        grid-template-columns: 1fr;
+
+        max-width: 500px;
+
+        margin: auto;
+    }
+
+    .heading h1 {
+        font-size: 45px;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    body {
+        overflow-y: auto;
+    }
+
+    .container {
+        padding: 25px 18px;
+    }
+
+    .heading {
+        margin-bottom: 35px;
+    }
+
+    .heading h1 {
+        font-size: 36px;
+    }
+
+    .heading p {
+        font-size: 16px;
+    }
+
+    #dates,
+    button {
+        height: 60px;
+    }
+
+    .result {
+        min-height: 100px;
+    }
+
+    .result p {
+        font-size: 18px;
+    }
+
+}
